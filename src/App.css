@@ -1,0 +1,7 @@
+#root {
+  @apply h-screen flex items-center
+}
+
+.owl-nav {
+  @apply opacity-0
+}
