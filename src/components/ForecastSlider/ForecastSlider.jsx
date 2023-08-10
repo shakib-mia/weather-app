@@ -37,9 +37,8 @@ const ForecastSlider = ({ hours }) => {
     }, [])
 
     return <div className='relative'>
-        <OwlCarousel className='owl-theme text-black' items={6} dots={false} nav startPosition={
+        {hours.length ? <OwlCarousel className='owl-theme text-black' items={6} dots={false} nav startPosition={
             startPosition
-
         } responsive={{
             0: {
                 items: 1
@@ -62,8 +61,8 @@ const ForecastSlider = ({ hours }) => {
 
 
         }}>
-            {hours.length ? hours.map((props, key) => <ForecastItem {...props} key={key} />) : "Loading..."}
-        </OwlCarousel>
+            {hours.map((props, key) => <ForecastItem {...props} key={key} />)}
+        </OwlCarousel> : <h2 className='text-center w-full'>Loading...</h2>}
 
         {hours.length > 0 && <div className="absolute bottom-0 left-0 right-0 w-screen flex justify-center z-[9999999]">
             <div className='flex gap-5 items-center'>

@@ -2,7 +2,8 @@
 import PropTypes from "prop-types"
 import { timeHours } from "../../constants";
 
-const ForecastItem = ({ temp_c, condition, time }) => {
+const ForecastItem = (props) => {
+    const { temp_c, condition, time } = props
 
     return <div className={`item w-[80%] rounded-xl py-5 mx-auto flex flex-col items-center ${parseInt(time.split(" ")[1].split(":")[0]) === timeHours ? "border-[3px] border-slate-500 border-opacity-50 bg-slate-200" : "bg-slate-100"}`} onClick={() => console.log(condition)}>
         <h4>{time.split(" ")[1]}</h4>

@@ -11,7 +11,8 @@ function App() {
   const [location, setLocation] = useState({});
   const [current, setCurrent] = useState({});
   const [locationName, setLocationName] = useState("")
-  const [forecast, setForecast] = useState({})
+  const [forecast, setForecast] = useState({});
+  // console.log(import.meta.env.VITE_MESSAGE);
   // const url = 'https://weatherapi-com.p.rapidapi.com/forecast.json';
 
   // console.log(location);
@@ -41,7 +42,7 @@ function App() {
         url: 'https://weatherapi-com.p.rapidapi.com/forecast.json',
         params: { q: location.latitude + "," + location.longitude },
         headers: {
-          'X-RapidAPI-Key': '7c53b078acmsh122d83ecbdece92p145375jsnca77b4f04b1d',
+          'X-RapidAPI-Key': import.meta.env.VITE_RAPIDAPIKEY,
           'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com',
         }
       };
@@ -73,7 +74,7 @@ function App() {
 
   return (
     <WeatherContext.Provider value={{ current, forecast, locationName }}>
-      <div className={`bg-cover h-screen bg-no-repeat text-white ${current.is_day ? "bg-white" : "bg-gray-800 text-white"}`} style={{ backgroundImage: `url(${bg})` }}>
+      <div className={`bg-cover h-screen overflow-x-hidden bg-no-repeat text-white ${current.is_day ? "bg-white" : "bg-gray-800 text-white"}`} style={{ backgroundImage: `url(${bg})` }}>
         <Data />
         <ForeCast />
         <Credit />
